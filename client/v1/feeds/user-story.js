@@ -19,9 +19,13 @@ UserStory.prototype.get = function () {
         .signPayload()
         .send()
         .then(function(data) {
-          return _.map(data.items, function (medium) {
-              return new Media(that.session, medium);
-            });
+          if (!data.reels_media.length) {
+            return [];
+          }
+
+          return _.map(data.reels_media[0].items, function (medium) {
+            return new Media(that.session, medium);
+          });
         });
 };
 
