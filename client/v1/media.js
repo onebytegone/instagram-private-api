@@ -74,7 +74,7 @@ Media.prototype.getParams = function () {
     return _.extend(this._params, {
         account: this.account.params,
         comments: _.map(this.comments, 'params'),
-        location: this.location ? this.location.params : {},
+        location: this.location ? _.omit(this.location.params, [ 'location' ]) : {},
         carouselMedia:  _.map(this._params.carouselMedia, 'params')
     });
 };
