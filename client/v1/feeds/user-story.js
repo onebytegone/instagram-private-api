@@ -19,13 +19,19 @@ UserStory.prototype.get = function () {
         .signPayload()
         .send()
         .then(function(data) {
-          if (!data.reels_media.length) {
-            return [];
-          }
+            var reels = [];
 
-          return _.map(data.reels_media[0].items, function (medium) {
-            return new Media(that.session, medium);
-          });
+            if (data.reels_media && _.size(data.reels_media)) {
+                reels = data.reels_media;
+            } else if (data.reels && _.size(data.reels)) {
+                reels = data.reels;
+            } else {
+                return [];
+            }
+
+            return _.map(_.values(reels)[0].items, function (medium) {
+                return new Media(that.session, medium);
+            });
         });
 };
 
