@@ -59,6 +59,7 @@ const ROUTES = {
     discoverAyml: 'discover/ayml/',
     inbox: 'direct_v2/inbox/<%= cursor ? ("?cursor=" + cursor) : "" %>',
     inboxPending: 'direct_v2/pending_inbox/<%= maxId ? ("?max_id=" + maxId) : "" %>',
+    presence: 'direct_v2/get_presence/',
     threads: 'direct_v2/threads/?user_ids=<% JSON.stringify(threads) %>',
     threadsShow: 'direct_v2/threads/<%= threadId %>/<%= cursor ? ("?cursor=" + cursor) : "" %>',
     threadsSeen: 'direct_v2/threads/<%= threadId %>/items/<%= itemId %>/seen/',
@@ -90,9 +91,9 @@ const WEB_ROUTES = {
 }
 
 const PRIVATE_KEY = {
-    SIG_KEY: '0443b39a54b05f064a4917a3d1da4d6524a3fb0878eacabf1424515051674daa',
+    SIG_KEY: '109513c04303341a7daf27bb41b268e633b30dcc65a3fe14503f743176113869',
     SIG_VERSION: '4',
-    APP_VERSION: '10.33.0'
+    APP_VERSION: '27.0.0.7.97'
 }
 
 
