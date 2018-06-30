@@ -114,7 +114,15 @@ FeedBase.prototype.stop = function () {
 };
 
 FeedBase.prototype.setCursor = function (cursor) {
-    this.cursor = cursor;
+    if (_.isObject(cursor)) {
+       this.cursor = cursor.server_cursor;
+    } else {
+       try {
+          this.cursor = JSON.parse(cursor).server_cursor;
+       } catch (e) {
+          this.cursor = cursor;
+       }
+    }
 };
 
 FeedBase.prototype.getCursor = function () {
