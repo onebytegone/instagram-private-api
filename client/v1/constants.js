@@ -80,6 +80,7 @@ const ROUTES = {
     save: 'media/<%= id %>/save/',
     unsave: 'media/<%= id %>/unsave/',
     userStory: 'feed/reels_media/',
+    userStoryViewers: 'media/<%= mediaId %>/list_reel_media_viewer/<%= maxId ? ("?max_id=" + maxId) : "" %>',
     storyTray: 'feed/reels_tray/'
 };
 
